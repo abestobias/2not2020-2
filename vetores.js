@@ -73,3 +73,12 @@ for(let fruta of vetor1){
     console.log(fruta)
 }
 
+console.log('--------------------------------------------------')
+
+// forma 3 : forEach()
+vetor1.forEach(fruta => console.log(fruta))
+
+// Argumento como função tradicional
+vetor1.forEach(function(fruta){
+    console.log(fruta)
+})
