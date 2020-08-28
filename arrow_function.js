@@ -38,5 +38,49 @@ console.log('--------------------------------------------')
 let aleatorio2 = () =>Math.floor(Math.random() *1000)
 console.log(aleatorio2())
 
+console.log('--------------------------------------------')
+// Situação alternativa 2 : Função com 1 + argumentos
 
+//Função tradicional com 1+ argumentos
 
+let imc = function(peso, altura){
+    return peso/(altura**2)
+}
+
+//Arrow function com 1+ argumentos
+//Os parenteses dos argumentos são obrigatórios quando o numero de argumentos >1
+
+let imc2 = (peso, altura) =>peso/(altura**2) 
+
+console.log(imc(87,1.78))
+console.log(imc2(87, 1.78))
+
+// Conclusão: os parenteses só podem ser omitidos da lista de argumentos 
+// de uma arrow function quando ha um e apenas 1 argumento
+
+// Situação alternativa 3 : funções com mais de uma linha no corpo
+
+// Função tradicional
+//5! = 5 * 4 * 3 * 2 * 1 (120)
+let fatorial = function(n){
+    let res = 1
+    for (let i=n; i > 1; i--){
+        res *=i
+    }
+    return res
+}
+
+// Arrow Function com corpo maior que uma linha
+// Não há como fazer otimização quanto ao corpo da função 
+
+let fatorial2 = n => {
+    let res = 1
+    for (let i = n; i > 1; i--){
+        res *= i
+    }
+    return res
+}
+
+console.log('===========================================')
+console.log(fatorial(5))
+console.log(fatorial2(5))
