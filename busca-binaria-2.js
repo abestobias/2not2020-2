@@ -2,11 +2,13 @@
 // PRECISA estar ordenado pelo critério de busca 
 
 let comp = 0 
-function buscaBinaria(lista, valorBusca, fnComp) {
-    let inicio = 0
-    let fim = lista.length - 1
+// Implementação Recursiva
+// Uma função a si mesma com pelo menos um de seus parametros com valor alterado 
+function buscaBinaria(lista, valorBusca, fnComp, inicio, fim) {
+    //let inicio = 0
+    //let fim = lista.length - 1
 
-    while (fim >= inicio) {
+    if (fim >= inicio) {
         // Math.floor tira as casas decimais de um numero 
         let meio = Math.floor((fim + inicio) / 2)
 
@@ -19,11 +21,13 @@ function buscaBinaria(lista, valorBusca, fnComp) {
         }
         else if (res < 0 ) {
             comp +=2
-            fim = meio - 1
+            //fim = meio - 1
+            return buscaBinaria(lista, valorBusca, fnComp, inicio, meio -1)
         }
         else { // res > 0
             comp += 2
-            inicio = meio + 1
+            //inicio = meio + 1
+            return buscaBinaria(lista, valorBusca, fnComp, meio +1, fim)
         }
     }
     return -1 // valor não encontrado
@@ -36,6 +40,14 @@ function comparaNome(obj, valorBusca){
     // Um número positivo para indicar que o primeiro > segundo
     else return 1 // valorBusca > obj.first_name 
 }
+
+let nums = [4,16,22,29,35,44,52,58,66,71,80,88,94]
+
+    console.log(buscaBinaria(nums,66,(elPos, busca) =>{
+        if(busca===elPos)return 0
+        else if(busca<elPos) return -1
+        else return 1
+    },0,12))
 
 let listaNomes = require('./dados/lista-nomes')
 
