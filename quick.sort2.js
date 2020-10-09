@@ -35,10 +35,22 @@ quickSort(nums)
 console.log(nums)
 console.log({passadas, comparacoes, trocas})*/
 
-const nomes = require('./dados/100-mil-nomes')
-console.time('teste nomes')
-quickSort(nomes)
-console.timeEnd('teste nomes')
-console.log(nomes)
+const candidatos = require('./dados/candidatos-2018')
+console.time('teste candidatos')
+//quickSort(candidatos, (a,b) =>a.NM_CANDIDATO > b.NM_CANDIDATO)
+
+quickSort(candidatos, (a,b) => {
+    // Ordenação considerando o primeiro NR_CANDIDATO e depois o NM_CANDIDATO
+    if(a.NR_CANDIDATO == b.NR_CANDIDATO){
+        if(a.NM_CANDIDATO > b.NM_CANDIDATO) return true
+        else return false
+    }
+    else if(a.NR_CANDIDATO > b.NR_CANDIDATO) return true
+    else return false
+})
+
+
+console.timeEnd('teste candidatos')
+console.log(candidatos)
 console.log('Memória usada (MB):', process.memoryUsage().heapUsed / 1024 / 1024)
 console.log({ passadas, comparacoes, trocas })
